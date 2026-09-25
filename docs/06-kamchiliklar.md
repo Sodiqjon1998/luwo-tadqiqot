@@ -44,6 +44,9 @@ o'qilishi qiyin. Hover holatida esa yanada yomonlashadi (2.05:1).
 Diqqatga sazovor: to'g'ri variant tizimda **allaqachon mavjud** —
 `action-dark` tokeni 16.66:1 beradi. Ya'ni muammo palitrada emas, tanlovda.
 
+Jonli darsda ham xuddi shu rang ishlatiladi: viktorinadagi **"Keyingi savol"**
+va **"Viktorina yakuni"** tugmalari proyektorga chiqadigan ekranda turadi.
+
 ---
 
 ## ② `/classes` grid'i mobil qurilmada buziladi
@@ -190,6 +193,94 @@ alohida sahifa yoki komponent orqali qilingandir.
 
 ---
 
+# Jonli darsda topilganlar (2026-09-25)
+
+Haqiqiy dars kuzatuvidan — [08-jonli-dars.md](08-jonli-dars.md). Bu bo'lim
+ham ichida muhimlik bo'yicha tartiblangan.
+
+---
+
+## ⑩ Dars oxirida o'qituvchi paneldan chiqarib yuboriladi
+
+**Daraja:** yuqori · **Ta'sir:** har bir uzun jonli dars
+
+Viktorina g'oliblari ekranidan keyin panel o'z-o'zidan `/login` ga o'tdi:
+
+```
+~08:52    kirish
+09:44:12  oxirgi muvaffaqiyatli HTTP so'rov
+          (keyingi 4 daqiqada monitor faqat WebSocket bilan ishladi)
+09:48:43  /organizations/{id}/feedback            → 401
+09:48:57  /me, /classes, /organizations/{id}/me   → 401 (×8)
+09:48:59  → /login
+```
+
+`/auth/logout` chaqirilmagan, ya'ni o'qituvchi o'zi chiqmagan.
+
+**Ehtimoliy sabab:** kirish tokeni taxminan 45 daqiqa amal qiladi. Jonli
+dars paytida monitor HTTP so'rov yubormaydi (hammasi WebSocket orqali),
+shuning uchun token yangilanmaydi. Dars oxirida birinchi HTTP so'rov 401
+oladi va panel o'qituvchini chiqarib yuboradi. 45 daqiqalik dars uchun bu
+**aynan dars oxiriga** to'g'ri keladi.
+
+**Oqibat:**
+
+- Dars oxiridagi `/feedback` so'rovi (o'qituvchi fikri yoki muammo xabari)
+  401 bilan qaytgan — yo'qolgan bo'lishi mumkin
+- O'qituvchi darsni yakunlash oqimini tugata olmaydi, qayta kirishi kerak.
+  Dars yakunlanmay qolsa, natijalar oraliq holatda qoladi
+  ([03-dars-oqimi.md](03-dars-oqimi.md) — "tugallanmagan dars")
+
+**Yechim:** dars davomida tokenni fon rejimida yangilab turish yoki
+401 olganda avval refresh qilib, so'rovni takrorlash.
+
+> Kuzatuvchi ham cookie bilan bir necha GET so'rov yuborgan. Ular
+> autentifikatsiya holatini o'zgartirmasligi kerak, lekin bu to'liq
+> istisno qilinmagan. Tasdiqlash uchun kuzatuvchisiz 45+ daqiqalik darsda
+> takrorlash kerak.
+
+---
+
+## ⑪ Suzuvchi tugma "Davom etish" ni to'sib qo'yadi
+
+**Daraja:** o'rta · **Ta'sir:** tor ekranda monitor
+
+~800px kenglikda o'ng pastdagi suzuvchi **"Muammo haqida xabar bering"**
+tugmasi monitor pastki panelidagi **"Davom etish →"** tugmasining ustiga
+tushadi — matn "Davon…" bo'lib kesiladi. Bu amaliyotdan keyingi qadamga
+o'tadigan asosiy tugma. 1902px kenglikda muammo yo'q.
+
+**Yechim:** monitor sahifasida suzuvchi tugmani yashirish yoki pastki panelga
+o'ng tomondan joy (padding) qoldirish.
+
+---
+
+## ⑫ Podiumda uzun ism so'z o'rtasidan bo'linadi
+
+**Daraja:** past · **Ta'sir:** proyektordagi viktorina yakuni
+
+"Viktorina g'oliblari" podiumida to'liq F.I.Sh. (otasining ismi bilan,
+katta harfda) ko'rsatiladi. Uzun ism ustunga sig'maydi va **so'z o'rtasidan**
+bo'linadi — oxirgi harf alohida qatorga tushadi.
+
+**Yechim:** podiumda faqat ism + familiya ko'rsatish (monitor chiplarida
+allaqachon faqat familiya ishlatilgan), sig'magan so'zni esa bo'lmasdan
+kichraytirish yoki qisqartirish.
+
+---
+
+## ⑬ Kontent so'rovlarida CORS xatolari
+
+**Daraja:** past · **Turi:** texnik
+
+`/api/v1/content/scenes/{sha256}` so'rovlari konsolda ~70 marta
+*"No 'Access-Control-Allow-Origin' header"* xatosi bilan bloklangan
+(16 sahnaning har biri 4–5 martadan). Slaydlar baribir ko'rindi — boshqa
+urinish yoki kesh orqali bo'lsa kerak. Natija: ortiqcha trafik va
+konsoldagi shovqin haqiqiy xatolarni yashiradi.
+
+---
+
 ## Xulosa
 
 Platforma texnik jihatdan puxta qurilgan: tizimli tokenlar, izchil
@@ -200,3 +291,7 @@ qo'llab-quvvatlashi. Kamchiliklar asosan **ikki joyda to'plangan**:
 2. **Mobil responsive** — bitta grid to'liq e'tibordan chetda qolgan
 
 Ikkalasi ham tuzatish oson — tizimning o'zi to'g'ri qurilgan.
+
+Jonli dars kuzatuvi uchinchi, jiddiyroq joyni ko'rsatdi:
+**sessiya muddati** (⑩). U darsning eng muhim lahzasida — yakunlashda —
+o'qituvchini chiqarib yuboradi.

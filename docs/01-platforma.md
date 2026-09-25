@@ -76,6 +76,16 @@ O'qituvchi paneli — **SPA** (Single Page Application), React asosida,
 Vite bilan yig'ilgan. Barcha kontent autentifikatsiyadan keyin ochiladi;
 ochiq qismi faqat kirish sahifasi va parolni tiklash.
 
+Texnik stek (tarmoq va bundle tahlilidan, [08-jonli-dars.md](08-jonli-dars.md)):
+
+| Qism | Texnologiya |
+|---|---|
+| API | REST — `api.luwo.ai/api/v1` |
+| Real vaqt (jonli dars) | **Phoenix Channels** (Elixir), WebSocket + LongPoll zaxirasi |
+| Marshrutlash | Fayl asosidagi router (`_authed.*` chunk nomlari) |
+| Analitika | PostHog (EU), sessiya yozuvi bilan |
+| Kontent | `content/scenes/{sha256}` — hash bo'yicha manzillangan sahnalar |
+
 ## Interfeys tillari
 
 Platforma kamida uch tilni qo'llab-quvvatlaydi: **o'zbek**, **rus** va

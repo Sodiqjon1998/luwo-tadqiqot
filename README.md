@@ -18,6 +18,10 @@ tegishli faylga qo'shib boriladi.
 | [05 — Dizayn tizimi](docs/05-dizayn-tizimi.md) | Tokenlar, ranglar, tipografika, responsive, animatsiya |
 | [06 — Kamchiliklar](docs/06-kamchiliklar.md) | Topilgan nosozliklar va kontrast muammolari |
 | [07 — Ochiq savollar](docs/07-ochiq-savollar.md) | Hali tekshirilmagan joylar — keyingi qadamlar |
+| [08 — Jonli dars](docs/08-jonli-dars.md) | Haqiqiy dars kuzatuvi: lobby, monitor, viktorina, real vaqt protokoli |
+
+**Tadqiqot asosidagi loyiha:** [SQL Maktab — MVP rejasi](mvp/sql-maktab-mvp.md) —
+9–11-sinflar uchun LUWO uslubidagi SQL o'qitish platformasi (Python + PostgreSQL).
 
 ---
 
@@ -36,16 +40,22 @@ tegishli faylga qo'shib boriladi.
 - [x] Dizayn tizimi — CSS tokenlari darajasida
 - [x] Responsive xatti-harakat (375 / 768 / desktop)
 - [x] Accessibility auditi
+- [x] **Jonli dars ekrani** — lobby, taqdimot, amaliyot monitori, viktorina, podium
+- [x] Kutish xonasi (lobby) interfeysi
+- [x] Real vaqt texnologiyasi — Phoenix Channels (WebSocket)
+
+**Qisman:**
+
+- [ ] O'quvchi tomoni (`student.luwo.ai`) — faqat kod kiritish ekrani
+- [ ] Mashq/amaliyot topshiriqlarining ichki tuzilishi — faqat monitor va kod nomlaridan
+- [ ] Dars yakuni — "Darsni yakunlash" dialogi va `LessonFinale` ko'rilmadi
+- [ ] Til almashtirish xatti-harakati — boshlang'ich til kuzatildi
 
 **Qolgan:**
 
-- [ ] **Jonli dars ekrani** — eng muhim qism, hali ochilmagan
-- [ ] Kutish xonasi (lobby) interfeysi
-- [ ] O'quvchi tomoni (`student.luwo.ai`)
-- [ ] Mashq/amaliyot topshiriqlarining ichki tuzilishi
+- [ ] O'yin maydoni (dars 3-qadami) ichi
 - [ ] PIN kartochkalarini chop etish ko'rinishi
 - [ ] "Boshqa sinfga o'tkazish" oqimi
-- [ ] Til almashtirish xatti-harakati
 
 ---
 
@@ -56,9 +66,13 @@ sifatida o'qildi, CSS build fayli (`index-*.css`, ~367 KB) to'liq tahlil qilindi
 kontrast koeffitsientlari WCAG formulasi bo'yicha hisoblandi, responsive
 xatti-harakat 375px / 768px / desktop kengliklarida sinaldi.
 
-**Tegilmagan amallar:** jonli dars boshlanmadi (o'quvchilar ekraniga chiqadi va
-yozuv qoldiradi), o'quvchilar boshqa sinfga ko'chirilmadi, PIN kodlar ochilmadi,
-sozlamalar o'zgartirilmadi.
+**Jonli dars (2026-09-25):** o'qituvchi haqiqiy darsni o'zi o'tkazdi.
+Kuzatuvchi faqat sahifa holatini, DOM'ni, tarmoq so'rovlari vaqtlarini va
+statik JS bundle'larni o'qidi. Dars sahifasida hech narsa bosilmadi.
+
+**Tegilmagan amallar:** o'quvchilar boshqa sinfga ko'chirilmadi, sozlamalar
+o'zgartirilmadi, jonli darsda "Sinfga ko'rsatish", "Diqqat" va bolani
+chiqarish tugmalari bosilmadi.
 
 ---
 

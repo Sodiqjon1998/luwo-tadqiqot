@@ -65,20 +65,25 @@ oynasida umuman ko'rsatilmaydi** — o'qituvchi bolalar bajaradigan
 topshiriqlarni oldindan ko'ra olmaydi. Ular faqat natijalar jadvalida
 "7 tadan 3 ta" ko'rinishida paydo bo'ladi.
 
+Jonli darsda aniqlanishicha, dars 4 qadamdan iborat. Demak tayyorgarlik
+oynasida **O'yin maydoni** ham yo'q. Jonli dars monitorida esa topshiriq
+nomlari ko'rinadi (masalan 11 ta) — o'qituvchi ularni birinchi marta dars
+paytida ko'radi.
+
 ---
 
 ## 2. Jonli dars
 
-> Bu oqim to'g'ridan-to'g'ri kuzatilmagan (dars boshlanmadi — bolalar
-> ekraniga chiqadi va yozuv qoldiradi). Quyidagilar o'qituvchi tajribasi va
-> kod tahlilidan yig'ilgan.
+> Bu bo'lim dastlab o'qituvchi tajribasi va CSS tokenlaridan yig'ilgan edi.
+> 2026-09-25 da haqiqiy dars bevosita kuzatildi — to'liq tafsilot:
+> **[08-jonli-dars.md](08-jonli-dars.md)**. Quyida taxminlar tuzatilgan.
 
 ### Qadamlar
 
 ```
 1. O'qituvchi "Darsni boshlash" ni bosadi
         ↓
-2. Ekranda DARS KODI chiqadi  (uy vazifasi kodidan alohida)
+2. Ekranda 6 xonali DARS KODI chiqadi  (8 xonali uy kodidan alohida)
         ↓
 3. O'quvchilar student.luwo.ai da "Dars" bo'limini tanlaydi
         ↓
@@ -91,7 +96,8 @@ topshiriqlarni oldindan ko'ra olmaydi. Ular faqat natijalar jadvalida
 7. KUTISH XONASI — o'qituvchi kim kirganini real vaqtda ko'radi
    (nechtadan nechta qo'shildi)
         ↓
-8. Hammani kutish shart emas — o'qituvchi xohlagan paytda boshlaydi
+8. Hammani kutish shart emas — kamida 1 bola ulangach boshlash mumkin,
+   kechikkanlar dars davomida ham qo'shiladi
         ↓
 9. MONITOR — dars davomida barcha o'quvchilar holati kuzatiladi
 ```
@@ -110,34 +116,35 @@ hech narsa yozmasdan kira oladi (faqat raqamlar).
 
 ### Monitor ekranidagi holatlar
 
-CSS tokenlaridan aniqlangan (`docs/05-dizayn-tizimi.md` ga qarang) — jonli
-darsda quyidagi holatlar ko'rsatiladi:
+CSS tokenlaridan aniqlangan (`docs/05-dizayn-tizimi.md` ga qarang), ma'nolari
+jonli darsda tasdiqlangan:
 
-| Token | Rang | Taxminiy ma'no |
+| Token | Rang | Ma'no (kuzatilgan) |
 |---|---|---|
-| `hand` | `#f97316` to'q sariq | Qo'l ko'tarish — yordam so'ramoqda |
-| `away` | `#574cc4` binafsha | Chiqib ketgan / ulanmagan |
+| `hand` | `#f97316` to'q sariq | Qo'l ko'tarish — "Qo'llar ko'tarilgan" filtri |
+| `away` | `#574cc4` binafsha | Ulanish uzilgan — "Oflayn", "Tarmoqda yo'q" |
 | `pending` | `#64748b` kulrang | Kutilmoqda |
-| `idle` | `#bcc4d2` och kulrang | Harakatsiz — qotib qolgan |
+| `idle` | `#bcc4d2` och kulrang | **2 daqiqa** bitta topshiriqda — "bitta ekranda N daq" |
 | `done` | `#4cb85f` yashil | Bajardi |
 | `correct` / `incorrect` | `#46d6a4` / `#ff6f91` | To'g'ri / noto'g'ri javob |
 | `cell-current` | `#7ac8f5` | Joriy qadam |
 
-Har bir o'quvchi uchun alohida **"lane"** (yo'lakcha) uslublari mavjud:
-`lane-head`, `lane-rule`, `lane-gap` — ya'ni monitor gorizontal yo'laklar
-ko'rinishida, har bolaning dars bo'ylab harakati ko'rinadi.
+**Tuzatish:** "lane" (yo'lakcha) bola uchun emas, **topshiriq uchun**. Monitor
+topshiriqlar ro'yxati ko'rinishida, har bola esa o'zi turgan topshiriq
+qatorida chip bo'lib turadi.
 
-Shuningdek `mirror-pane` tokeni bor — ehtimol o'qituvchi bolaning ekranini
-"ko'zgu" qilib ko'ra oladi.
+`mirror-pane` tasdiqlandi — har bola uchun "Sinfga ko'rsatish" tugmasi bor.
 
 ### Dars tuzilishi
 
+Taxmin qilingan 3 qism emas, **4 qadam**:
+
 ```
-TAQDIMOT  →  MASHQ (amaliyot)  →  SAVOL (viktorina)
+TAQDIMOT  →  AMALIYOT  →  O'YIN MAYDONI  →  VIKTORINA
 ```
 
-Natijalar shu uch qismga mos yozib boriladi: topshiriqlar soni, taxminiy
-ball, viktorina natijasi.
+Har qadamga o'tishni o'qituvchi o'zi bosadi. Natijalar jadvalida
+topshiriqlar soni, taxminiy ball va viktorina natijasi ko'rinadi.
 
 ---
 

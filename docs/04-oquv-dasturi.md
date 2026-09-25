@@ -12,13 +12,16 @@
 Sinf (1–8)
  └── Modul (10–12 ta)
       └── Dars (1–10 ta)
-           ├── Brifing      (o'qituvchi uchun)
-           ├── Taqdimot     (~13 slayd)
-           ├── Mashq        (topshiriqlar, masalan 7 ta)
-           └── Viktorina    (~5–8 savol)
+           ├── Brifing        (o'qituvchi uchun)
+           ├── Taqdimot       (~13–16 slayd)
+           ├── Mashq          (topshiriqlar, 7–11 ta)
+           ├── O'yin maydoni  (jonli darsda aniqlangan)
+           └── Viktorina      (~5–8 savol)
 ```
 
-Har bir dars ≈ 45 daqiqa (marketing saytidagi da'vo).
+Har bir dars ≈ 45 daqiqa (marketing saytidagi da'vo). Kuzatilgan 6-sinf
+darsi ~28 daqiqa davom etdi: taqdimot 9, amaliyot 15, viktorina 4,5 daqiqa
+([08-jonli-dars.md](08-jonli-dars.md)).
 
 ---
 

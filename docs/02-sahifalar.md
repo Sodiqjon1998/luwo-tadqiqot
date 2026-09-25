@@ -10,8 +10,13 @@ O'qituvchi panelining to'liq tuzilishi.
 /roster                    O'quvchilar ro'yxati
 /roster/{sinf}/{o'quvchi}  Individual o'quvchi hisoboti
 /support                   Yordam va murojaatlar
+/monitor                   Jonli dars: lobby → monitor → viktorina (08-jonli-dars.md)
+/login                     Kirish (autentifikatsiyasiz)
 /forgot-password           Parolni tiklash (autentifikatsiyasiz)
 ```
+
+Dars ketayotganda boshqa sahifalarda tepada global banner turadi:
+**"{sinf} — dars ketmoqda · Darsni kuzatishga qaytish"**.
 
 ---
 
